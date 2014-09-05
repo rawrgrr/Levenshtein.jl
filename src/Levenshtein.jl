@@ -30,6 +30,5 @@ end
 end
 return costs[sizeof(a) + 1, sizeof(b) + 1]
 end
-end
 
 end # module
