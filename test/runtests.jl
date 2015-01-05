@@ -6,3 +6,5 @@ using Base.Test
 @test 1 == 1
 @test 4 == levenshtein("Hi, my name is", "my name is")
 @test 21 == levenshtein("%^@!^@#^@#!! Snoooooooop", "Dro!p it!!!! like it's hot")
+@test 7 == levenshtein("Alborgow", "amoniak")
+
