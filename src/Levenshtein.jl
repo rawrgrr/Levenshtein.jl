@@ -26,18 +26,21 @@ function levenshtein(a::String, b::String, deletion_cost::Real, insertion_cost::
             local oldRow::Array{Real, 1} = zeros(Real, length(b) + 1)
             local newRow::Array{Real, 1} = zeros(Real, length(b) + 1)
 
-            # Initialize the old row for empty a and i characters in b
+            # Initialize the old row for empty a and i characters in b and by
+            # either deleting i characters from b or adding i characters in a
             oldRow[1] = 0
             for i in 1:length(b)
-                oldRow[i + 1] = i * deletion_cost
+                oldRow[i + 1] = i * min(deletion_cost, insertion_cost)
             end
+
 
             i = 0
             for r in a
                 i += 1
 
-                # Delete i characters from a to get empty b
-                newRow[1] = i * deletion_cost
+                # Delete i characters from a to get empty b or insert i
+                # characters in a to get b[1:i]
+                newRow[1] = i * min(deletion_cost, insertion_cost)
 
                 j = 0
                 for c in b

@@ -9,9 +9,11 @@ using Base.Test
 @test 7 == levenshtein("Alborgów", "amoniak")
 
 @test 3 == levenshtein("sitting", "kitten")
-@test 1 == levenshtein("sitting", "kitten", 1, 0, 0)
+@test 0 == levenshtein("sitting", "kitten", 1, 0, 0)
 @test 0 == levenshtein("sitting", "kitten", 0, 1, 0)
 @test 0 == levenshtein("sitting", "kitten", 0, 0, 1)
 @test 5 == levenshtein("sitting", "kitten", 1, 1, Inf)
 @test 5 == levenshtein("sitting", "kitten", 1, 1, Inf)
-@test 12 == levenshtein("sitting", "kitten", 10, 1, 1)
+@test 6 == levenshtein("sitting", "kitten", 10, 1, 1)
+
+@test levenshtein("a", "ab", 1, 2, 0) == levenshtein("ab", "a", 2, 1, 0)
