@@ -29,7 +29,7 @@ function levenshtein(source::String, target::String, deletion_cost::Real, insert
             # Initialize the old row for empty source and i characters in target
             oldRow[1] = 0
             for i in 1:length(target)
-                oldRow[i + 1] = i * deletion_cost
+                oldRow[i + 1] = i * insertion_cost
             end
 
             i = 0
@@ -37,7 +37,7 @@ function levenshtein(source::String, target::String, deletion_cost::Real, insert
                 i += 1
 
                 # Delete i characters from source to get empty target
-                newRow[1] = i * insertion_cost
+                newRow[1] = i * deletion_cost
 
                 j = 0
                 for c in target 
