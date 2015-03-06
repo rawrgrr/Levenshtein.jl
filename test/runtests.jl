@@ -17,3 +17,15 @@ using Base.Test
 @test 6 == levenshtein("sitting", "kitten", 10, 1, 1)
 
 @test levenshtein("a", "ab", 1, 2, 0) == levenshtein("ab", "a", 2, 1, 0)
+
+function randString(len)
+    return utf8(string([char(int(rand() * 255 + 1)) for _ in 1:len]...))
+end
+
+for i in 1:100
+    s = randString(floor(rand() * 100))
+    t = randString(floor(rand() * 100))
+    ins, del, sub = int(rand() * 1000), int(rand() * 1000), Inf
+
+    @test levenshtein(s, t, ins, del, sub) == levenshtein(t, s, del, ins, sub)
+end
