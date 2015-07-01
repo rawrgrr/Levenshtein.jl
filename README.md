@@ -1,4 +1,6 @@
-levenshtein
+[![Build Status](https://travis-ci.org/rawrgrr/Levenshtein.jl.svg)](https://travis-ci.org/rawrgrr/Levenshtein.jl)
+
+Levenshtein
 ===========
 
 Levenshtein distance between two strings in julia
