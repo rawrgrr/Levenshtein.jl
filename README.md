@@ -1,7 +1,7 @@
 # Levenshtein
 
 [![Build Status](https://travis-ci.org/rawrgrr/Levenshtein.jl.svg?branch=master)](https://travis-ci.org/rawrgrr/Levenshtein.jl)
-[![Coverage Status](https://coveralls.io/repos/rawrgrr/Levenshtein.jl/badge.svg)](https://coveralls.io/r/rawrgrr/Levenshtein.jl)
+[![Coverage Status](https://coveralls.io/repos/rawrgrr/Levenshtein.jl/badge.svg?branch=master)](https://coveralls.io/r/rawrgrr/Levenshtein.jl)
 
 
 Levenshtein distance between two strings in [julia](http://julialang.org/)
