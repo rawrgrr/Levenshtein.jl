@@ -32,9 +32,7 @@ function levenshtein!{R<:Real,S<:Real,T<:Real}(
         # Space complexity of function = O(length(target))
         return levenshtein!(target, source, insertion_cost, deletion_cost, substitution_cost, costs)
     else
-        if length(source) == 0
-            return length(target) * insertion_cost
-        elseif length(target) == 0
+        if length(target) == 0
             return length(source) * deletion_cost
         else
             old_cost_index = 1
