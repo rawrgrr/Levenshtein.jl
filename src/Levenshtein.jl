@@ -3,25 +3,27 @@
 ##
 module Levenshtein
 
+using Compat
+
 export levenshtein
 export levenshtein!
 
 
-function levenshtein(source::String, target::String)
+function levenshtein(source::AbstractString, target::AbstractString)
     return levenshtein(source, target, 1)
 end
 
-function levenshtein(source::String, target::String, cost::Real)
+function levenshtein(source::AbstractString, target::AbstractString, cost::Real)
     return levenshtein(source, target, cost, cost, cost)
 end
 
-function levenshtein{R<:Real,S<:Real,T<:Real}(source::String, target::String, deletion_cost::R, insertion_cost::S, substitution_cost::T)
+function levenshtein{R<:Real,S<:Real,T<:Real}(source::AbstractString, target::AbstractString, deletion_cost::R, insertion_cost::S, substitution_cost::T)
     return levenshtein!(target, source, insertion_cost, deletion_cost, substitution_cost)
 end
 
 function levenshtein!{R<:Real,S<:Real,T<:Real}(
-    source::String,
-    target::String,
+    source::AbstractString,
+    target::AbstractString,
     deletion_cost::R,
     insertion_cost::S,
     substitution_cost::T,
