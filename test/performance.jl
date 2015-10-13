@@ -1,7 +1,7 @@
 using Levenshtein
 
 function randString(len)
-    return utf8(string([char(int(rand() * 255 + 1)) for _ in 1:len]...))
+    return utf8(string([Char(round(Int,rand() * 255 + 1)) for _ in 1:len]...))
 end
 
 function run_huge_string(l1, l2)

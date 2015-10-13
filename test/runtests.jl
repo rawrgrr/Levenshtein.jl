@@ -1,7 +1,8 @@
 using Levenshtein
 using Base.Test
+using Compat
 
-function levenshtein_base(a::String, b::String, deletion_cost::Real, insertion_cost::Real, substitution_cost::Real)
+function levenshtein_base(a::AbstractString, b::AbstractString, deletion_cost::Real, insertion_cost::Real, substitution_cost::Real)
     local costs::Array{Real, 2} = zeros(Real, length(a) + 1, length(b) + 1)
     # Initialize the deletion costs
     for i in 1:length(a)
@@ -59,13 +60,9 @@ end
 @test levenshtein("a", "", 10, 0, 0) == 10
 @test levenshtein("", "a", 0, 10, 0) == 10
 
-function randString(len)
-    return utf8(string([char(int(rand() * 255 + 1)) for _ in 1:len]...))
-end
-
 for i in 1:100
-    s = randString(floor(rand() * 100))
-    t = randString(floor(rand() * 100))
+    s = randstring(floor(Int,rand() * 100))
+    t = randstring(floor(Int,rand() * 100))
     ins, del, sub = rand() * 1000, rand() * 1000, rand() * 1000
 
     calculated, truth = levenshtein(s, t, del, ins, sub), levenshtein_base(s, t, del, ins, sub)
