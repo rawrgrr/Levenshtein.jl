@@ -1,9 +1,10 @@
-##
-# Simple module for measuring distance between 2 strings
-##
-module Levenshtein
 
-using Compat
+__precompile__(true)
+
+"""
+Simple module for measuring distance between 2 strings
+"""
+module Levenshtein
 
 export levenshtein
 export levenshtein!
@@ -17,18 +18,18 @@ function levenshtein(source::AbstractString, target::AbstractString, cost::Real)
     return levenshtein(source, target, cost, cost, cost)
 end
 
-function levenshtein{R<:Real,S<:Real,T<:Real}(source::AbstractString, target::AbstractString, deletion_cost::R, insertion_cost::S, substitution_cost::T)
+function levenshtein(source::AbstractString, target::AbstractString, deletion_cost::R, insertion_cost::S, substitution_cost::T) where {R<:Real,S<:Real,T<:Real}
     return levenshtein!(target, source, insertion_cost, deletion_cost, substitution_cost)
 end
 
-function levenshtein!{R<:Real,S<:Real,T<:Real}(
+function levenshtein!(
     source::AbstractString,
     target::AbstractString,
     deletion_cost::R,
     insertion_cost::S,
     substitution_cost::T,
     costs::Matrix = Array{promote_type(R, S, T)}( 2, length(target) + 1)
-)
+) where {R<:Real,S<:Real,T<:Real}
     cost_type = promote_type(R,S,T)
     if length(source) < length(target)
         # Space complexity of function = O(length(target))

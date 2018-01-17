@@ -1,7 +1,8 @@
+
 using Levenshtein
 
 function randString(len)
-    return utf8(string([Char(round(Int,rand() * 255 + 1)) for _ in 1:len]...))
+    return string([Char(round(Int,rand() * 255 + 1)) for _ in 1:len]...)
 end
 
 function run_huge_string(l1, l2)
@@ -20,7 +21,7 @@ function run_multiple_times(l1, l2, runs)
     s = randString(l1)
     t = randString(l2)
     ins, del, sub = rand() * 1000, rand() * 1000, rand() * 1000
-    costs = Array(Float64, 2, max(length(s), length(t)) + 1)
+    costs = Array{Float64}(2, max(length(s), length(t)) + 1)
 
     # run without reusing cost matrix
     println("\nRunning $runs runs without reusing cost matrix for $l1-char String vs $l2-char String")
