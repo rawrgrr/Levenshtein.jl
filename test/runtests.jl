@@ -1,6 +1,6 @@
+
 using Levenshtein
 using Base.Test
-using Compat
 
 function levenshtein_base(a::AbstractString, b::AbstractString, deletion_cost::Real, insertion_cost::Real, substitution_cost::Real)
     local costs::Array{Real, 2} = zeros(Real, length(a) + 1, length(b) + 1)
@@ -41,7 +41,6 @@ end
 @test 0 == levenshtein_base("sitting", "kitten", 0, 0, 1)
 @test 5 == levenshtein_base("sitting", "kitten", 1, 1, Inf)
 @test 12 == levenshtein_base("sitting", "kitten", 10, 1, 1)
-
 
 # write your own tests here
 @test 4 == levenshtein("Hi, my name is", "my name is")
