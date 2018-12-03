@@ -1,6 +1,5 @@
-
 using Levenshtein
-using Base.Test
+using Test
 
 function levenshtein_base(a::AbstractString, b::AbstractString, deletion_cost::Real, insertion_cost::Real, substitution_cost::Real)
     local costs::Array{Real, 2} = zeros(Real, length(a) + 1, length(b) + 1)

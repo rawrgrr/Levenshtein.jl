@@ -1,4 +1,3 @@
-
 __precompile__(true)
 
 """
@@ -19,7 +18,7 @@ function levenshtein(source::AbstractString, target::AbstractString, cost::Real)
 end
 
 function levenshtein(source::AbstractString, target::AbstractString, deletion_cost::R, insertion_cost::S, substitution_cost::T) where {R<:Real,S<:Real,T<:Real}
-    return levenshtein!(target, source, insertion_cost, deletion_cost, substitution_cost)
+    return levenshtein!(target, source, deletion_cost, insertion_cost, substitution_cost)
 end
 
 function levenshtein!(
@@ -28,12 +27,12 @@ function levenshtein!(
     deletion_cost::R,
     insertion_cost::S,
     substitution_cost::T,
-    costs::Matrix = Array{promote_type(R, S, T)}( 2, length(target) + 1)
+    costs::Matrix=Array{promote_type(R, S, T)}(2, length(target) + 1)
 ) where {R<:Real,S<:Real,T<:Real}
     cost_type = promote_type(R,S,T)
     if length(source) < length(target)
         # Space complexity of function = O(length(target))
-        return levenshtein!(target, source, insertion_cost, deletion_cost, substitution_cost, costs)
+        return levenshtein!(target, source, deletion_cost, insertion_cost, substitution_cost, costs)
     else
         if length(target) == 0
             return length(source) * deletion_cost
