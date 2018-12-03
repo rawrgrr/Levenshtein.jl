@@ -1,8 +1,8 @@
 # Levenshtein
 
-[![Build Status](https://travis-ci.org/venkr/Levenshtein.jl.svg?branch=master)](https://travis-ci.org/venkr/Levenshtein.jl)
-[![Coverage Status](https://coveralls.io/repos/venkr/Levenshtein.jl/badge.svg?branch=master)](https://coveralls.io/r/venkr/Levenshtein.jl)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/venkr/Levenshtein.jl/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/rawrgrr/Levenshtein.jl.svg?branch=master)](https://travis-ci.org/rawrgrr/Levenshtein.jl)
+[![Coverage Status](https://coveralls.io/repos/rawrgrr/Levenshtein.jl/badge.svg?branch=master)](https://coveralls.io/r/rawrgrr/Levenshtein.jl)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rawrgrr/Levenshtein.jl/master/LICENSE.md)
 
 
 Levenshtein distance between two strings in [julia](http://julialang.org/)
