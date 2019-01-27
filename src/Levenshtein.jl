@@ -28,7 +28,7 @@ function levenshtein!(
     deletion_cost::R,
     insertion_cost::S,
     substitution_cost::T,
-    costs::Matrix = Array{promote_type(R, S, T)}( 2, length(target) + 1)
+    costs::Matrix = Array{promote_type(R, S, T)}(undef, 2, length(target) + 1)
 ) where {R<:Real,S<:Real,T<:Real}
     cost_type = promote_type(R,S,T)
     if length(source) < length(target)
